@@ -62,8 +62,6 @@ def Rotate_video():
             transpose_var = 'transpose=3'
         elif transpose_var_input == '4':
             transpose_var = 'transpose=2,transpose=2'
-		elif transpose_var_input == '5':
-			transpose_var = 'hflip'
         else:
             print('Please enter a valid option next time!')
         if ".mp4" not in video_id or ".webm" not in video_id:
