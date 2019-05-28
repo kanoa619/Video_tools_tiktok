@@ -6,6 +6,17 @@ import json
 
 
 def Main():
+    print(("""
+    
+___  ___          _       ______         _____          _____   _   _          _   _ 
+|  \/  |         | |      | ___ \       |  _  |        |  _  | | | | |        | | | |
+| .  . | __ _  __| | ___  | |_/ /_   _  | | | |_      _| | | | | | | |_      _| | | |
+| |\/| |/ _` |/ _` |/ _ \ | ___ \ | | | | | | \ \ /\ / / | | | | | | \ \ /\ / / | | |
+| |  | | (_| | (_| |  __/ | |_/ / |_| | \ \_/ /\ V  V /\ \_/ / | |_| |\ V  V /| |_| |
+\_|  |_/\__,_|\__,_|\___| \____/ \__, |  \___/  \_/\_/  \___/   \___/  \_/\_/  \___/ 
+                                  __/ |                                              
+                                 |___/                                               
+    """))
     print('1. Rotate Video')
     print('2. to webm (4chan)')
     print('3. video to 60fps')
@@ -51,8 +62,8 @@ def Rotate_video():
             transpose_var = 'transpose=3'
         elif transpose_var_input == '4':
             transpose_var = 'transpose=2,transpose=2'
-        elif transpose_var_input == '5':
-            transpose_var = 'hflip'
+		elif transpose_var_input == '5':
+			transpose_var = 'hflip'
         else:
             print('Please enter a valid option next time!')
         if ".mp4" not in video_id or ".webm" not in video_id:
