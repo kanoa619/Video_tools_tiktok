@@ -195,7 +195,7 @@ def batch_convert_60fps():
         video_bitrate = Find_video_bitrate(drive_var_input + "\\" + video_id)
         video_name_without_extension, video_file_extension = Split_video_parts(
             video_id)
-        if "_60fps" in video_name_without_extension:
+        if "_60fps" in video_name_without_extension or check_60fps_video_exists(drive_var_input, video_name_without_extension, video_file_extension) == True:
             print('This video already has a 60fps tag! (not converting)')
         else:
             batch_convert_subprocess = subprocess.Popen([
@@ -268,5 +268,12 @@ def Split_video_parts(video_id):
     video_id_input = ('.').join(video_id.split('.')[:-1])
     return video_id_input, video_file_extension
 
-
+def check_60fps_video_exists(folder_directory, video_name_without_extension, video_file_extension):
+	file_list = os.listdir(folder_directory)
+	video_id_60 = video_name_without_extension + "_60fps" + video_file_extension
+	if video_id_60 in file_list:
+		print('This video already has a 60fps tag! (not converting)')
+		return True
+	else:
+		return False
 Main()
