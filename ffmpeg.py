@@ -42,6 +42,7 @@ ___  ___          _       ______         _____          _____
         time.sleep(1)
         Main()
 
+common_filetypes = ['mp4', 'webm', 'mov', 'avi','flv', 'wmv']
 
 def Rotate_video():
     drive_var_input = input(
@@ -66,11 +67,10 @@ def Rotate_video():
             transpose_var = 'hflip'
         else:
             print('Please enter a valid option next time!')
-        if ".mp4" not in video_id or ".webm" not in video_id:
-            video_id = Find_video_from_id(video_id, drive_var_input)
         video_id_input, video_file_extension = Split_video_parts(video_id)
-        video_bitrate = Find_video_bitrate(
-            str(drive_var_input) + "\\" + str(video_id))
+		if video_file_extension not in common_filetypes:
+            video_id = Find_video_from_id(video_id, drive_var_input)
+        	video_bitrate = Find_video_bitrate(str(drive_var_input) + "\\" + str(video_id))
         rotate_process = subprocess.Popen([
             "ffmpeg", "-i", video_id, "-b:v", video_bitrate + "M", "-vf", transpose_var, video_id_input + "_rot" + video_file_extension
         ])
@@ -272,7 +272,7 @@ def check_60fps_video_exists(folder_directory, video_name_without_extension, vid
 	file_list = os.listdir(folder_directory)
 	video_id_60 = video_name_without_extension + "_60fps" + video_file_extension
 	if video_id_60 in file_list:
-		print('This video already has a 60fps tag! (not converting)')
+		print('This video already has a 60fps tag! (Orig ID)')
 		return True
 	else:
 		return False
